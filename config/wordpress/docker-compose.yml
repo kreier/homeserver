@@ -1,0 +1,41 @@
+services:
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - wordpress
+
+  wordpress:
+    image: wordpress:php8.2-apache
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppass
+      WORDPRESS_DB_HOST: db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wp.rule=Host(`wp.server.home`)"
+      - "traefik.http.routers.wp.entrypoints=websecure"
+      - "traefik.http.routers.wp.tls=true"
+    networks:
+      - wordpress
+      - traefik
+    depends_on:
+      - db
+
+volumes:
+  db:
+
+networks:
+  wordpress:
+    internal: true
+  traefik:
+    external: true

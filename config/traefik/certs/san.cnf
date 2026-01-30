@@ -1,0 +1,6 @@
+[req]
+distinguished_name=req
+
+[ext]
+subjectAltName=DNS:*.server.home,DNS:server.home
+

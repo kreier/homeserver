@@ -1,0 +1,6 @@
+tls:
+  stores:
+    default:
+      defaultCertificate:
+        certFile: /certs/server.home-fullchain.crt
+        keyFile: /certs/server.home.key

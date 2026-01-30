@@ -1,0 +1,59 @@
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: mariadb-hofkoh
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - hofkoh
+
+  wordpress:
+    image: wordpress:latest
+    restart: unless-stopped
+    container_name: wordpress-hofkoh
+    environment:
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppass
+      WORDPRESS_DB_HOST: db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wp.rule=Host(`hofkoh.server.home`)"
+      - "traefik.http.routers.wp.entrypoints=websecure"
+      - "traefik.http.routers.wp.tls=true"
+    networks:
+      - hofkoh
+      - traefik
+    depends_on:
+      - mariadb
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin-hofkoh
+    restart: always
+    depends_on:
+      - mariadb
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+    ports:
+      - "8081:80"   # access phpMyAdmin at http://localhost:8081
+    networks:
+      - hofkoh
+
+volumes:
+  db_data:
+  wp_data:
+
+networks:
+  hofkoh:
+    internal: true
+  traefik:
+    external: true

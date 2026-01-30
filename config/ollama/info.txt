@@ -1,0 +1,12 @@
+docker run -d \
+  --name ollama \
+  --restart unless-stopped \
+  --gpus all \
+  -p 11434:11434 \
+  -v ollama:/root/.ollama \
+  ollama/ollama
+
+
+docker exec -it ollama bash
+
+ollama pull gpt-oss:latest

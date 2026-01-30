@@ -1,0 +1,23 @@
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+  websecure:
+    address: ":443"
+
+providers:
+  docker:
+    exposedByDefault: false
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
+
+tls:
+  certificates:
+    - certFile: /certs/server.home-fullchain.crt
+      keyFile: /certs/server.home.key
