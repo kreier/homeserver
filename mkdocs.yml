@@ -1,0 +1,31 @@
+site_name: Kreier Homeserver
+site_url: https://kreier.github.io/homeserver/
+repo_url: https://github.com/kreier/homeserver
+edit_uri: edit/main/docs/
+
+site_name: Kreier Homeserver
+theme:
+  name: material
+  palette:
+    scheme: slate  # Dark mode is perfect for server docs
+    primary: teal
+  features:
+    - navigation.tabs
+    - content.code.copy
+    - search.suggest
+
+plugins:
+  - search
+  - awesome-pages # This handles the navigation structure
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - admonition  # For "Notes" and "Warnings"
+  - attr_list
+
+nav:
+  - Home: index.md
+  - Setup Guide: setup.md
+  - Awesome Resources: awesome.md
