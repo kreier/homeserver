@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://kreier.github.io/homeserver/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://kreier.github.io/homeserver/services/n8n/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://kreier.github.io/homeserver/services/pihole/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+</urlset>
