@@ -109,27 +109,26 @@ With the UHD 630 we can even use the GPU to support ollama: You will need to "Pa
 
 I would like to have a few unique domain names for different services, maybe subdomains. That's not supported by my Asus router RT-AX55. I can only get a `pi4.home` assigned to a predetermined IP, further parts could possibly be done with `traefik` and subfolders. But better to have a dedicated DNS server. Here is where the Raspberry Pi 4 steps in.
 
- Traefik is forwarding incoming requests to the right container, but getting a DNS entry is another question. With Pihole I also get a great AD blocker. Its surprizing that about 25% of all DNS requests have to be blocked!
+Traefik is forwarding incoming requests to the right container, but getting a DNS entry is another question. With Pihole I also get a great AD blocker. Its surprizing that about 25% of all DNS requests have to be blocked!
 
- ### Pihole AD blocker and DNS server
+### Pihole AD blocker and DNS server
 
- It's nice to have a graphical interface. It just took a little longer to get the service running on 10.10.10.4/admin over http to be accepted locally on https://pi4.hv.io.vn/admin with a valid certificate. But it works now!
+It's nice to have a graphical interface. It just took a little longer to get the service running on 10.10.10.4/admin over http to be accepted locally on https://pi4.hv.io.vn/admin with a valid certificate. But it works now!
 
- ### n8n.hv.io.vn to automate things
+### n8n.hv.io.vn to automate things
 
- It is just an attempt to use
+It is just an attempt to use this tool. Maybe some extra accounts will help to not have this spread out.
 
- ### ai.hv.io.vn
+### ai.hv.io.vn
 
- This is where the fontend of Open WebUI responds to my requests, in the backbone it connects to the ollama server. It might first have to power it up, but after less than 60 seconds the machine is ready.
+This is where the fontend of Open WebUI responds to my requests, in the backbone it connects to the ollama server. It might first have to power it up, but after less than 60 seconds the machine is ready.
 
- ### OpenClaw
-
+### OpenClaw
  This would be reckless, but I'm curious nonetheless. The old Clawdbot made some waves end 2025 and early 2026. What can we actually build?
 
- ### ha2.hv.io.vn
+### ha2.hv.io.vn
 
- This is in my own network, all Wifi sensors in my home run on the other network. But I can connect to some Bluetooth temperature and humidity sensor and show it on the info panel. And toner status of the laser printer.
+This is in my own network, all Wifi sensors in my home run on the other network. But I can connect to some Bluetooth temperature and humidity sensor and show it on the info panel. And toner status of the laser printer.
 
 ## pi3.home for Home Assistant and Pihole in secondary network
 
