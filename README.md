@@ -15,7 +15,7 @@ Documentation on my journey to a little homelab. It currently consist of 2 route
 This machine runs only when started manually, and is switched off most of the time. It's more a playground to see what's possible with local LLMs due to its 3 GPUs and 22 GB of fast VRAM. Other specifications:
 
 - Intel [i3-6100](https://www.intel.com/content/www/us/en/products/sku/90729/intel-core-i36100-processor-3m-cache-3-70-ghz/specifications.html) 2C/4T 3.7 GHz Skylake
-- EVGA [Z170 Classified](https://www.evga.com/support/manuals/files/151-SS-E179.pdf) motherboard with Quad-SLI, 6 PCIe slots
+- EVGA [Z170 Classified 4-way](https://www.evga.com/support/manuals/files/151-SS-E179.pdf) motherboard with Quad-SLI, 6 PCIe slots
 - RAM: 32 GB DDR4 2400 (early 2026 reduced to 16 GB)
 - GPU: all NVIDIA
   - P104-100 8GB GDDR5X [314 GB/s](https://kreier.github.io/benchmark/gpu/opencl/) 5005 MHz PCIe 1.0 x4
@@ -23,6 +23,8 @@ This machine runs only when started manually, and is switched off most of the ti
   - P106-100 6GB GDDR5  [176 GB/s](https://kreier.github.io/benchmark/gpu/opencl/) 4006 MHz PCIe 1.0 x16
 - NVMe: 256 Toshiba PCIe 4.0 x4
 - SSD: 240 Kingston SATA3 for the models of LLM used by Ollama
+
+This image shows the 47 layers of [glm-4.7-flash](https://ollama.com/library/glm-4.7-flash):q4_K_M using 19 of the 22 GB VRAM. Each GPU has about 1 GB headroom for the K-V-pairs related to their layers when doing inference over longer context. An update of the tested maximum context length follows. 2026-02-05
 
 ![nvtop 3x GPU](docs/2026-01-27nvtop.jpeg)
 
@@ -105,7 +107,29 @@ With the UHD 630 we can even use the GPU to support ollama: You will need to "Pa
 
 ## pi4.home for Home Assistant and DNS
 
-Just with the router from Asus it's not possible to have subdomains for the server to access the different services. Traefik is forwarding incoming requests to the right container, but getting a DNS entry is another question. With Pihole I also get a great AD blocker. Its surprizing that about 25% of all DNS requests have to be blocked!
+I would like to have a few unique domain names for different services, maybe subdomains. That's not supported by my Asus router RT-AX55. I can only get a `pi4.home` assigned to a predetermined IP, further parts could possibly be done with `traefik` and subfolders. But better to have a dedicated DNS server. Here is where the Raspberry Pi 4 steps in.
+
+ Traefik is forwarding incoming requests to the right container, but getting a DNS entry is another question. With Pihole I also get a great AD blocker. Its surprizing that about 25% of all DNS requests have to be blocked!
+
+ ### Pihole AD blocker and DNS server
+
+ It's nice to have a graphical interface. It just took a little longer to get the service running on 10.10.10.4/admin over http to be accepted locally on https://pi4.hv.io.vn/admin with a valid certificate. But it works now!
+
+ ### n8n.hv.io.vn to automate things
+
+ It is just an attempt to use
+
+ ### ai.hv.io.vn
+
+ This is where the fontend of Open WebUI responds to my requests, in the backbone it connects to the ollama server. It might first have to power it up, but after less than 60 seconds the machine is ready.
+
+ ### OpenClaw
+
+ This would be reckless, but I'm curious nonetheless. The old Clawdbot made some waves end 2025 and early 2026. What can we actually build?
+
+ ### ha2.hv.io.vn
+
+ This is in my own network, all Wifi sensors in my home run on the other network. But I can connect to some Bluetooth temperature and humidity sensor and show it on the info panel. And toner status of the laser printer.
 
 ## pi3.home for Home Assistant and Pihole in secondary network
 
