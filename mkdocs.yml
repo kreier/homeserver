@@ -3,29 +3,41 @@ site_url: https://kreier.github.io/homelab/
 repo_url: https://github.com/kreier/homelab
 edit_uri: edit/main/docs/
 
-site_name: Kreier Homeserver
 theme:
   name: material
   palette:
-    scheme: slate  # Dark mode is perfect for server docs
+    scheme: slate
     primary: teal
+    accent: cyan
   features:
     - navigation.tabs
+    - navigation.sections
+    - navigation.expand
     - content.code.copy
     - search.suggest
-
-plugins:
-  - search
-  - awesome-pages # This handles the navigation structure
 
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences
-  - admonition  # For "Notes" and "Warnings"
+  - admonition
   - attr_list
+  - tables
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 nav:
   - Home: index.md
-  - Setup Guide: setup.md
-  - Awesome Resources: awesome.md
+  - Setup: setup.md
+  - Servers:
+    - server.home:
+      - Hardware: machines/server-hardware.md
+      - Software: machines/server-software.md
+    - 8500.home:
+      - Hardware: machines/8500-hardware.md
+      - Software: machines/8500-software.md
+  - Raspberry Pi:
+    - pi4.home: machines/pi4.md
+    - pi3.home: machines/pi3.md
+  - History: history.md
