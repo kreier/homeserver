@@ -7,14 +7,14 @@ This machine is a playground for local LLMs, utilizing 3 GPUs to achieve 22 GB o
 ![Server Front](../assets/2025-01_server.jpg){ width="59.2%" } ![Server Internal](../assets/2025-01_server_display.jpg){ width="39.3%" }
 *Left: The server enclosure. Right: Internal display showing system stats.*
 
-<div class="grid cards" markdown>
+<!-- <div class="grid cards" markdown>
 
 -   ![Server Front](../assets/2025-01_server.jpg){ title="Server Enclosure Exterior" }
 -   ![Server Internal](../assets/2025-01_server_display.jpg){ title="System Status Display" }
 
 </div>
 
-*Click any image to expand. You can use arrow keys to navigate the gallery.*
+*Click any image to expand. You can use arrow keys to navigate the gallery.* -->
 
 *Click any image above to expand it.*
 
