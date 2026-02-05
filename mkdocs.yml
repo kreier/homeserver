@@ -20,11 +20,11 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
-    - navigation.tabs           # Top horizontal menu
-    - navigation.sections       # Groups items into sections in the sidebar
-    - navigation.expand         # Allows submenus to expand/collapse
-    - navigation.path           # Breadcrumbs
-    - navigation.indexes        # Allows clicking on the parent section name
+    # - navigation.tabs             # This moves Setup/Servers/Pi to the TOP bar
+    - navigation.sections         # This creates the visual groups in the sidebar
+    - navigation.expand           # This keeps sub-menus open by default
+    - navigation.path             # Breadcrumbs
+    - navigation.indexes          # Makes parent titles clickable
     - content.code.copy
     - search.suggest
 
@@ -56,7 +56,6 @@ nav:
     - 8500.home:
       - Hardware: machines/8500-hardware.md
       - Software: machines/8500-software.md
-  - Raspberry Pi:
     - pi4.home: machines/pi4.md
-    - pi3.home: machines/pi3.md
+    - pi3.home: machines/pi3.md  
   - History: history.md

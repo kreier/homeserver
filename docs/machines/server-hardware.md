@@ -1,4 +1,4 @@
-# :material-gpu: server.home - Hardware
+# :material-memory: server.home - Hardware :material-server:
 
 This machine is a playground for local LLMs, utilizing 3 GPUs to achieve 22 GB of fast VRAM.
 
